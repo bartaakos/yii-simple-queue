@@ -19,6 +19,6 @@ class m140404_122834_create_table extends CDbMigration
 
     public function down()
     {
-        $this->dropTable('file');
+        $this->dropTable('queue');
     }
 }
