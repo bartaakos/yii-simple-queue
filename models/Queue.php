@@ -5,7 +5,6 @@ Yii::import('application.models._base.BaseQueue');
 class Queue extends BaseQueue
 {
     const TYPE_MAIL = 10;
-    const TYPE_REFUND = 20;
 
     public static function model($className=__CLASS__) {
         return parent::model($className);
