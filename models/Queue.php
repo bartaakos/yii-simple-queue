@@ -14,7 +14,7 @@ class Queue extends BaseQueue
     {
         return array(
             'CSerializeBehavior' => array(
-                'class' => 'vendor.bartaakos.CSerializeBehavior',
+                'class' => 'vendor.bartaakos.cserializebehavior.CSerializeBehavior',
                 'serialAttributes' => array('data'),
             )
         );
