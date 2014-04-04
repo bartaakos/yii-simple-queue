@@ -1,0 +1,27 @@
+{
+    "name": "bartaakos/yii-simple-queue",
+    "description": "Simple yii queue",
+    "keywords": ["yii queue", "yii simple queue", "queue"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Akos Barta",
+            "email": "brta.akos@gmail.com",
+            "homepage": "https://github.com/bartaakos"
+        }
+    ],
+    "require": {
+        "yiisoft/yii": ">=1.1.14",
+        "assisrafael/giix": "dev-master",
+        "bartaakos/cserializebehavior": ">=1.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "classmap": [
+            "commands/",
+            "migrations/",
+            "models/"
+        ]
+    }
+}
