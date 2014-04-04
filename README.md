@@ -1,4 +1,4 @@
-yii-simle-queue
+yii-simple-queue
 ===============
 
 Simple Yii queue
