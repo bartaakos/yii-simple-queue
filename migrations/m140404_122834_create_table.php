@@ -8,6 +8,7 @@ class m140404_122834_create_table extends CDbMigration
             "CREATE TABLE IF NOT EXISTS `queue` (
               `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
               `type` tinyint(2) unsigned NOT NULL,
+	          `associated_id` INT UNSIGNED NULL,
               `data` text NOT NULL,
               `create_time` datetime DEFAULT NULL,
               PRIMARY KEY (`id`),

@@ -11,67 +11,71 @@
  *
  * @property string $id
  * @property integer $type
+ * @property string $associated_id
  * @property string $data
  * @property string $create_time
  *
  */
 abstract class BaseQueue extends GxActiveRecord {
 
-	public static function model($className=__CLASS__) {
-		return parent::model($className);
-	}
+    public static function model($className=__CLASS__) {
+        return parent::model($className);
+    }
 
-	public function tableName() {
-		return 'queue';
-	}
+    public function tableName() {
+        return 'queue';
+    }
 
-	public static function label($n = 1) {
-		return Yii::t('app', 'Queue|Queues', $n);
-	}
+    public static function label($n = 1) {
+        return Yii::t('app', 'Queue|Queues', $n);
+    }
 
-	public static function representingColumn() {
-		return 'data';
-	}
+    public static function representingColumn() {
+        return 'data';
+    }
 
-	public function rules() {
-		return array(
-			array('type, data', 'required'),
-			array('type', 'numerical', 'integerOnly'=>true),
-			array('create_time', 'safe'),
-			array('create_time', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, type, data, create_time', 'safe', 'on'=>'search'),
-		);
-	}
+    public function rules() {
+        return array(
+            array('type, data', 'required'),
+            array('type', 'numerical', 'integerOnly'=>true),
+            array('associated_id', 'length', 'max'=>10),
+            array('create_time', 'safe'),
+            array('associated_id, create_time', 'default', 'setOnEmpty' => true, 'value' => null),
+            array('id, type, associated_id, data, create_time', 'safe', 'on'=>'search'),
+        );
+    }
 
-	public function relations() {
-		return array(
-		);
-	}
+    public function relations() {
+        return array(
+        );
+    }
 
-	public function pivotModels() {
-		return array(
-		);
-	}
+    public function pivotModels() {
+        return array(
+        );
+    }
 
-	public function attributeLabels() {
-		return array(
-			'id' => Yii::t('app', 'ID'),
-			'type' => Yii::t('app', 'Type'),
-			'data' => Yii::t('app', 'Data'),
-			'create_time' => Yii::t('app', 'Create Time'),
-		);
-	}
+    public function attributeLabels() {
+        return array(
+            'id' => Yii::t('app', 'ID'),
+            'type' => Yii::t('app', 'Type'),
+            'associated_id' => Yii::t('app', 'Associated'),
+            'data' => Yii::t('app', 'Data'),
+            'create_time' => Yii::t('app', 'Create Time'),
+        );
+    }
 
-	public function search() {
-		$criteria = new CDbCriteria;
+    public function search() {
+        $criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
-		$criteria->compare('type', $this->type);
-		$criteria->compare('data', $this->data, true);
-		$criteria->compare('create_time', $this->create_time, true);
+        $criteria->compare('id', $this->id, true);
+        $criteria->compare('type', $this->type);
+        $criteria->compare('associated_id', $this->associated_id, true);
+        $criteria->compare('data', $this->data, true);
+        $criteria->compare('create_time', $this->create_time, true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-		));
-	}
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
 }
