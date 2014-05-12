@@ -1,6 +1,6 @@
 <?php
 
-class QueueCommand extends CConsoleCommand
+class QueueCommand extends NpConsoleCommand
 {
 
     public function run($args)
